@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Karan Aujla World | Music Player</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="logo">
+                <i class="fab fa-spotify"></i>
+                <span>Karan Aujla World</span>
+            </div>
+            <nav class="nav-menu">
+                <a href="#" class="nav-item active"><i class="fas fa-home"></i> Home</a>
+                <a href="#" class="nav-item"><i class="fas fa-search"></i> Search</a>
+                <a href="#" class="nav-item"><i class="fas fa-book-open"></i> Your Library</a>
+            </nav>
+            <div class="playlists-section">
+                <p class="section-title">Playlists</p>
+                <div class="nav-item create-btn" id="create-playlist">
+                    <i class="fas fa-plus-square"></i> Create Playlist
+                </div>
+                <div id="playlist-list" class="scrollable-nav">
+                    </div>
+            </div>
+        </aside>
+
+        <main class="main-view">
+            <header class="top-bar">
+                <div class="search-container">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="search-input" placeholder="Search for songs or artists...">
+                </div>
+                <div class="user-profile">
+                    <a href="http://127.0.0.1:5500/jackson-master/index.html" target="_blank" class="dev">
+                   
+                    <br>
+                    <span class="dev">👉🏻See Developer Portfolio</span>
+                    </a>
+                </div>
+            </header>
+
+            <section class="content-body">
+                <div id="loading-overlay" class="hidden">
+                    <div class="spinner"></div>
+                </div>
+
+               <h2 id="greeting"></h2>
+                
+                <div class="section-header">
+                    <h2>Recommended for you</h2>
+                </div>
+                <div class="song-grid" id="song-grid">
+                    </div>
+
+                <div class="section-header mt-2">
+                    <h2>Recently Played</h2>
+                </div>
+                <div class="song-grid" id="recent-grid">
+                    </div>
+            </section>
+        </main>
+
+        <footer class="player-bar">
+            <div class="current-track-info">
+                <img id="now-playing-img" src="https://via.placeholder.com/60" alt="Album Art">
+                <div class="track-details">
+                    <p id="now-playing-title">Select a song</p>
+                    <p id="now-playing-artist">Artist</p>
+                </div>
+                <i class="far fa-heart heart-icon" id="like-btn"></i>
+            </div>
+
+            <div class="player-controls">
+                <div class="control-buttons">
+                    <button id="prev-btn"><i class="fas fa-step-backward"></i></button>
+                    <button id="play-pause-btn" class="play-main"><i class="fas fa-play"></i></button>
+                    <button id="next-btn"><i class="fas fa-step-forward"></i></button>
+                </div>
+                <div class="progress-container">
+                    <span id="current-time">0:00</span>
+                    <div class="progress-bar-bg" id="progress-bar-bg">
+                        <div class="progress-bar-fill" id="progress-bar-fill"></div>
+                    </div>
+                    <span id="duration">0:00</span>
+                </div>
+            </div>
+
+            <div class="volume-controls">
+                <i class="fas fa-volume-up"></i>
+                <input type="range" id="volume-slider" min="0" max="1" step="0.1" value="0.8">
+            </div>
+        </footer>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
