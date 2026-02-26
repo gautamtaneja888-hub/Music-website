@@ -4,15 +4,15 @@
  */
 
 const songs = [
-    { id: 0, title: "Bachke Bachke", artist: "Karan Aujla", cover: "../img/image.png", url: "../songs/bachke.mp3" },
-    { id: 1, title: "For A Reason", artist: "Karan Aujla", cover: "../img/image2.png", url: "../songs/for_a_reason.mp3" },
-    { id: 2, title: "Wavy", artist: "Karan Aujla", cover: "../img/image3.png", url: "../songs/wavy.mp3" },
-    { id: 3, title: "52 Bars", artist: "Karan Aujla", cover: "../img/image4.png", url: "../songs/wavy.mp3" },
-    { id: 4, title: "BoyFriend", artist: "Karan Aujla", cover: "../img/image5.png", url: "boyfriend.mp3" },
-    { id: 5, title: "I Really Do", artist: "Karan Aujla", cover: "../img/image6.png", url: "../songs/i_really_do.mp3" },
-    { id: 6, title: "Softly", artist: "Karan Aujla", cover: "../img/image7.png", url: "../songs/softly.mp3" },
-    { id: 7, title: "Admirin You", artist: "Karan Aujla", cover: "../img/image8.png", url: "../songs/admirin.mp3" },
-    { id: 8, title: "Winning Speech", artist: "Karan Aujla", cover: "../img/image9.png", url: "../songs/winning.mp3" },
+    { id: 0, title: "Bachke Bachke", artist: "Karan Aujla", cover: "img/image.png", url: "songs/bachke.mp3" },
+    { id: 1, title: "For A Reason", artist: "Karan Aujla", cover: "img/image2.png", url: "songs/for_a_reason.mp3" },
+    { id: 2, title: "Wavy", artist: "Karan Aujla", cover: "img/image3.png", url: "songs/wavy.mp3" },
+    { id: 3, title: "52 Bars", artist: "Karan Aujla", cover: "img/image4.png", url: "songs/wavy.mp3" },
+    { id: 4, title: "BoyFriend", artist: "Karan Aujla", cover: "img/image5.png", url: "songs/boyfriend.mp3" },
+    { id: 5, title: "I Really Do", artist: "Karan Aujla", cover: "image6.png", url: "songs/i_really_do.mp3" },
+    { id: 6, title: "Softly", artist: "Karan Aujla", cover: "img/image7.png", url: "songs/softly.mp3" },
+    { id: 7, title: "Admirin You", artist: "Karan Aujla", cover: "img/image8.png", url: "songs/admirin.mp3" },
+    { id: 8, title: "Winning Speech", artist: "Karan Aujla", cover: "img/image9.png", url: "songs/winning.mp3" },
 
 ];
 let recentlyPlayed = JSON.parse(localStorage.getItem("recent_songs")) || [];
@@ -233,3 +233,4 @@ function renderRecentlyPlayed() {
         recentGrid.appendChild(card);
     });
 }
+
