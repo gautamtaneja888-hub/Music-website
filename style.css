@@ -284,76 +284,106 @@ input[type="range"] {
     }
     .logo i { font-size: 28px; }
 }
+/* --- IMPROVED RESPONSIVE DESIGN --- */
 
-/* Mobile Devices */
-@media (max-width: 768px) {
+/* Tablets & Small Desktops (MD) */
+@media (max-width: 1024px) {
     .app-container {
-        grid-template-columns: 1fr; /* Full width main view */
-        grid-template-rows: 1fr 100px; /* Adjust player height */
+        grid-template-columns: 80px 1fr; 
+    }
+    /* Hide text labels in sidebar to save space */
+    .sidebar span, 
+    .sidebar .section-title, 
+    .sidebar .nav-item {
+        justify-content: center;
+        font-size: 0; 
+    }
+    .sidebar .nav-item i {
+        font-size: 24px;
+        margin: 0;
+    }
+    .logo span { display: none; }
+}
+
+/* Mobile Devices (SM) */
+@media (max-width: 768px) {
+    body {
+        overflow-y: auto; /* Allow scrolling on body if needed */
+    }
+
+    .app-container {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 110px; /* Slightly taller player for touch targets */
     }
 
     .sidebar {
-        display: none; /* Hide sidebar completely */
+        display: none; /* Hide sidebar; consider adding a bottom-nav for mobile later */
     }
 
     .main-view {
         padding: 15px;
+        padding-bottom: 120px; /* Prevent content from being hidden by player */
     }
 
     .top-bar {
+        background: var(--bg-base);
+        padding: 10px;
         flex-direction: column;
-        gap: 15px;
-    }
-
-    .search-container {
-        max-width: 100%;
+        gap: 10px;
     }
 
     .song-grid {
-        grid-template-columns: repeat(2, 1fr); /* 2 cards across */
-        gap: 15px;
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+        gap: 12px;
     }
 
-    /* Player adjustments for Mobile */
-    .volume-controls {
-        display: none; /* Hide volume to save space */
+    /* Player Bar Mobile Overhaul */
+    .player-bar {
+        flex-wrap: wrap;
+        height: 110px;
+        padding: 10px;
     }
 
     .current-track-info {
-        width: 60%;
+        width: 100%; /* Take full top row of player bar */
+        justify-content: flex-start;
+        margin-bottom: 5px;
     }
 
     .player-controls {
-        width: 40%;
+        width: 100%;
+        order: 2;
+    }
+
+    .volume-controls {
+        display: none; /* Usually handled by physical phone buttons */
     }
 
     .progress-container {
-        position: absolute;
-        bottom: 95px; /* Float progress bar above player */
-        left: 0;
         width: 100%;
-        padding: 0;
-    }
-
-    .progress-bar-bg {
-        border-radius: 0;
-        height: 3px;
-    }
-}
-
-/* Small Phones */
-@media (max-width: 480px) {
-    .song-grid {
-        grid-template-columns: 1fr; /* Single column */
-    }
-
-    .current-track-info img {
-        width: 45px;
-        height: 45px;
     }
 
     .control-buttons {
-        gap: 15px;
+        gap: 40px; /* Wider gaps for thumbs */
+    }
+}
+
+/* Very Small Phones (XS) */
+@media (max-width: 480px) {
+    .song-grid {
+        grid-template-columns: 1fr 1fr; /* Stay 2-wide but smaller */
+    }
+
+    .song-card {
+        padding: 10px;
+    }
+
+    .song-card h4 {
+        font-size: 14px;
+    }
+
+    .track-details p {
+        max-width: 200px;
     }
 }
 
