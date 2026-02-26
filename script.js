@@ -4,13 +4,19 @@
  */
 
 const songs = [
-    { id: 0, title: "Bachke Bachke", artist: "Karan Aujla", cover: "img/image.png", url: "songs/bachke.mp3" },
-    { id: 1, title: "For A Reason", artist: "Karan Aujla", cover: "img/image2.png", url: "songs/for_a_reason.mp3" },
-    { id: 2, title: "Wavy", artist: "Karan Aujla", cover: "img/image3.png", url: "songs/wavy.mp3" },
-    { id: 3, title: "52 Bars", artist: "Karan Aujla", cover: "img/image4.png", url: "songs/52bars.mp3" },
-    { id: 4, title: "BoyFriend", artist: "Karan Aujla", cover: "img/image5.png", url: "songs/boyfriend.mp3" },
-    { id: 5, title: "I Really Do", artist: "Karan Aujla", cover: "img/image6.png", url: "songs/i_really_do.mp3" },
+    { id: 0, title: "Bachke Bachke", artist: "Karan Aujla", cover: "../img/image.png", url: "../songs/bachke.mp3" },
+    { id: 1, title: "For A Reason", artist: "Karan Aujla", cover: "../img/image2.png", url: "../songs/for_a_reason.mp3" },
+    { id: 2, title: "Wavy", artist: "Karan Aujla", cover: "../img/image3.png", url: "../songs/wavy.mp3" },
+    { id: 3, title: "52 Bars", artist: "Karan Aujla", cover: "../img/image4.png", url: "../songs/wavy.mp3" },
+    { id: 4, title: "BoyFriend", artist: "Karan Aujla", cover: "../img/image5.png", url: "boyfriend.mp3" },
+    { id: 5, title: "I Really Do", artist: "Karan Aujla", cover: "../img/image6.png", url: "../songs/i_really_do.mp3" },
+    { id: 6, title: "Softly", artist: "Karan Aujla", cover: "../img/image7.png", url: "../songs/softly.mp3" },
+    { id: 7, title: "Admirin You", artist: "Karan Aujla", cover: "../img/image8.png", url: "../songs/admirin.mp3" },
+    { id: 8, title: "Winning Speech", artist: "Karan Aujla", cover: "../img/image9.png", url: "../songs/winning.mp3" },
+
 ];
+let recentlyPlayed = JSON.parse(localStorage.getItem("recent_songs")) || [];
+const recentGrid = document.getElementById("recent-grid");
 
 let currentSongIndex = 0;
 let isPlaying = false;
@@ -30,6 +36,12 @@ window.addEventListener('DOMContentLoaded', () => {
     renderSongs(songs);
     renderPlaylists();
     loadSong(songs[0]);
+    window.addEventListener('DOMContentLoaded', () => {
+    renderSongs(songs);
+    renderPlaylists();
+    loadSong(songs[0]);
+    renderRecentlyPlayed();
+});
 });
 
 // Render Song Cards
@@ -64,6 +76,8 @@ function playSong() {
     isPlaying = true;
     audio.play();
     playBtn.innerHTML = '<i class="fas fa-pause"></i>';
+
+    updateRecentlyPlayed(songs[currentSongIndex]);
 }
 
 function pauseSong() {
@@ -177,6 +191,45 @@ function updateGreeting() {
 }
 
 // Run function when page loads
-
 updateGreeting();
 
+
+function updateRecentlyPlayed(song) {
+    // Remove if already exists (to avoid duplicate)
+    recentlyPlayed = recentlyPlayed.filter(s => s.id !== song.id);
+
+    // Add to beginning
+    recentlyPlayed.unshift(song);
+
+    // Keep only last 3 songs
+    if (recentlyPlayed.length > 3) {
+        recentlyPlayed.pop();
+    }
+
+    // Save to localStorage
+    localStorage.setItem("recent_songs", JSON.stringify(recentlyPlayed));
+
+    renderRecentlyPlayed();
+}
+
+function renderRecentlyPlayed() {
+    recentGrid.innerHTML = "";
+
+    recentlyPlayed.forEach(song => {
+        const card = document.createElement("div");
+        card.className = "song-card";
+        card.innerHTML = `
+            <img src="${song.cover}" alt="${song.title}">
+            <h4>${song.title}</h4>
+            <p style="color: #b3b3b3; font-size: 13px;">${song.artist}</p>
+        `;
+
+        card.onclick = () => {
+            currentSongIndex = song.id;
+            loadSong(song);
+            playSong();
+        };
+
+        recentGrid.appendChild(card);
+    });
+}
