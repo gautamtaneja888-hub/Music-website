@@ -7,7 +7,7 @@ const songs = [
     { id: 0, title: "Bachke Bachke", artist: "Karan Aujla", cover: "img/image.png", url: "songs/bachke.mp3" },
     { id: 1, title: "For A Reason", artist: "Karan Aujla", cover: "img/image2.png", url: "songs/for_a_reason.mp3" },
     { id: 2, title: "Wavy", artist: "Karan Aujla", cover: "img/image3.png", url: "songs/wavy.mp3" },
-    { id: 3, title: "52 Bars", artist: "Karan Aujla", cover: "img/image4.png", url: "songs/wavy.mp3" },
+    { id: 3, title: "52 Bars", artist: "Karan Aujla", cover: "img/image4.png", url: "songs/52bars.mp3" },
     { id: 4, title: "BoyFriend", artist: "Karan Aujla", cover: "img/image5.png", url: "songs/boyfriend.mp3" },
     { id: 5, title: "I Really Do", artist: "Karan Aujla", cover: "image6.png", url: "songs/i_really_do.mp3" },
     { id: 6, title: "Softly", artist: "Karan Aujla", cover: "img/image7.png", url: "songs/softly.mp3" },
@@ -233,5 +233,6 @@ function renderRecentlyPlayed() {
         recentGrid.appendChild(card);
     });
 }
+
 
 
